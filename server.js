@@ -22,6 +22,17 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '/public/index.html'))
 });
 
+app.post('/api/notes', (req, res) => {
+  const notes = JSON.parse((fs.readFileSync('./db/db.json', 'utf8')));
+  const newNote = req.body;
+  newNote.id = uuidv4();
+  notes.push(newNote);
+
+  fs.writeFileSync('./db/db.json', JSON.stringify(notes, null, 2));
+  res.json(notes)
+  console.log(`Note saved\n ${JSON.stringify(newNote, null, 2)}`)
+})
+
 
 app.listen(PORT, () =>
   console.log(`App @ http://localhost:${PORT} 🚀🌑`)
