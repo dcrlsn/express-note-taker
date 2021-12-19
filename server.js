@@ -31,8 +31,16 @@ app.post('/api/notes', (req, res) => {
   fs.writeFileSync('./db/db.json', JSON.stringify(notes, null, 2));
   res.json(notes)
   console.log(`Note saved\n ${JSON.stringify(newNote, null, 2)}`)
-})
+});
 
+app.delete('/api/notes/:id', (req, res) => {
+  const notes = JSON.parse((fs.readFileSync('./db/db.json', 'utf8')));
+  const noteId = req.params.id;
+  const newNotes = notes.splice(notes.findIndex(e => e.id === noteId), 1)
+  console.log(JSON.stringify(newNotes, null, 2))
+  fs.writeFileSync('./db/db.json', JSON.stringify(notes, null, 2));
+  res.json(notes);
+});
 
 app.listen(PORT, () =>
   console.log(`App @ http://localhost:${PORT} 🚀🌑`)

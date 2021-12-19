@@ -1,26 +1,7 @@
 [
   {
-    "title": "Test Title",
-    "text": "Test text"
-  },
-  {
-    "title": "asd",
-    "text": "asd",
-    "id": "262eade3-11f5-4ad7-81f6-d5b41b8bf003"
-  },
-  {
-    "title": "asd",
-    "text": "asd",
-    "id": "b0469fb8-40da-4ebf-8d28-0602906d9e1e"
-  },
-  {
-    "title": "asd",
-    "text": "asd",
-    "id": "0e564aca-b6cd-4ac3-83ef-98b8bfded730"
-  },
-  {
-    "title": "asd",
-    "text": "asd",
-    "id": "976a43c7-3880-4311-bc63-53162c35ee72"
+    "title": "this is a note",
+    "text": "new note",
+    "id": "7544be1b-b617-49e5-9030-80e7831cb2c5"
   }
 ]
