@@ -38,7 +38,7 @@ app.delete('/api/notes/:id', (req, res) => {
   const newNotes = notes.splice(notes.findIndex(e => e.id === noteId), 1);
   fs.writeFileSync('./db/db.json', JSON.stringify(notes, null, 2));
   res.json(notes);
-  console.log('Note deleted\n', JSON.stringify(newNotes, null, 2));
+  console.log(`Note deleted\n ${JSON.stringify(newNotes, null, 2)}`);
 });
 
 app.listen(PORT, () =>
