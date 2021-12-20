@@ -23,7 +23,7 @@ app.get('*', (req, res) => {
 });
 
 app.post('/api/notes', (req, res) => {
-  const notes = JSON.parse((fs.readFileSync('./db/db.json', 'utf8')));
+  const notes = JSON.parse(fs.readFileSync('./db/db.json', 'utf8'));
   const newNote = req.body;
   newNote.id = uuidv4();
   notes.push(newNote);
@@ -35,10 +35,10 @@ app.post('/api/notes', (req, res) => {
 app.delete('/api/notes/:id', (req, res) => {
   const notes = JSON.parse((fs.readFileSync('./db/db.json', 'utf8')));
   const noteId = req.params.id;
-  const newNotes = notes.splice(notes.findIndex(e => e.id === noteId), 1);
+  const removedNote = notes.splice(notes.findIndex(e => e.id === noteId), 1);
   fs.writeFileSync('./db/db.json', JSON.stringify(notes, null, 2));
   res.json(notes);
-  console.log(`Note deleted\n ${JSON.stringify(newNotes, null, 2)}`);
+  console.log(`Note deleted\n ${JSON.stringify(removedNote, null, 2)}`);
 });
 
 app.listen(PORT, () =>
